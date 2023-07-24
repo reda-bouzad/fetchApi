@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Api Sandbox</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    
+    <div class="global">
+      <div class="container">
+        <h1>Learn Fetch Api</h1>
+        <button class="button-30" id="getText">Get Text</button>
+        <button class="button-30" id="getUsers">Get Users</button>
+        <button class="button-30" id="getPosts">Get Posts</button>
+      </div>
+
+      <div class="wrapper">
+        <div id="output-text"></div>
+        <div id="output-users"></div>
+        <div id="output-posts"></div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("getText").addEventListener("click", getText);
+      document.getElementById("getUsers").addEventListener("click", getUsers);
+      document.getElementById("getPosts").addEventListener("click", getPosts);
+      /*
+      without using arrow functions
+      function getText() {
+        fetch("sample.txt")
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (data) {
+            console.log(data);
+          });
+      }
+      */
+
+      // Fetching data from a text file using an arrow functions
+      function getText() {
+        fetch("sample.txt")
+          .then((res) => res.text())
+          .then(
+            (data) => (document.getElementById("output-text").innerHTML = data)
+          )
+          .catch((err) => console.log(err));
+      }
+
+      // Fetching data from a json file using an arrow function
+      function getUsers() {
+        fetch("users.json")
+          .then((res) => res.json())
+          .then((data) => {
+            let output = "<h2> List of all users: </h2> ";
+            data.forEach(function (users) {
+              output += `
+              <ul>
+                <li> ✅ ID: ${users.id} </li>
+                <li> ✅ Name:  ${users.name} </li>
+                <li> ✅ Email: ${users.email} </li>
+              </ul> `;
+            });
+            document.getElementById("output-users").innerHTML = output;
+          });
+      }
+
+      function getPosts() {
+        fetch("https://jsonplaceholder.typicode.com/posts/")
+          .then((res) => res.json())
+          .then((data) => {
+            let output = "<h2> My post :</h2>";
+            data.forEach(function (posts) {
+              output += `
+              <ul>
+                <li> ✅ Id:  ${posts.id} </li>
+                <li> ✅ Title: ${posts.title} </li>
+                <li> ✅ description: ${posts.body} </li>
+              </ul> `;
+            });
+            document.getElementById("output-posts").innerHTML = output;
+          });
+      }
+    </script>
+  </body>
+</html>
