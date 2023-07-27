@@ -5,7 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90;
 }
 
 .global {
@@ -59,8 +59,7 @@ h1 {
 }
 
 #output-posts {
-  height: 40vh;
-  overflow: scroll;
+  overflow: hidden;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: medium;
   font-weight: 400;
@@ -116,4 +115,34 @@ h1 {
 .button-30:active {
   box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+form{
+  border-radius: 10px;
+  margin: 30px;
+  border: 2px solid pink;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#title{
+  padding: 10px 100px 10px 100px;
+  border-radius: 5px;
+  border: none;
+  margin: 20px;
+  background-color: #d5d5d8;
+}
+
+#body{
+  padding: 10px 100px 10px 100px;
+  border-radius: 5px;
+  border: none;
+  margin: 20px;
+  background-color: #d5d5d8;
+}
+
+#submit{
+  margin: 0 auto;
+  align-self: flex-end;
 }
